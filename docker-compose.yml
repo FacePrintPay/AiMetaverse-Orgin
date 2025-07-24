@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  earth_agent:
+    image: python:3.10
+    container_name: earth_agent
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: ["python3"]
