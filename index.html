@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cosmic Sovereign Hub</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { margin: 0; background: #000; color: #fff; font-family: sans-serif; overflow: hidden; }
+    #stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+    .star { position: absolute; background: white; border-radius: 50%; }
+    #hub { padding: 2rem; text-align: center; }
+    h1 { font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(90deg, #0ff, #f0f); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .card { background: rgba(0,20,40,0.6); padding: 1.2rem; border-radius: 12px; transition: transform 0.3s; }
+    .card:hover { transform: translateY(-5px); background: rgba(0,40,80,0.8); }
+    svg { width: 32px; height: 32px; margin-bottom: 0.75rem; }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div id="hub">
+    <h1>🌌 Cosmic Sovereign Hub</h1>
+    <div class="grid" id="planets"></div>
+  </div>
+
+  <script>
+    // Simple stars
+    const stars = document.getElementById('stars');
+    for (let i = 0; i < 150; i++) {
+      const s = document.createElement('div');
+      s.classList.add('star');
+      s.style.width = s.style.height = Math.random() * 3 + 'px';
+      s.style.left = Math.random() * 100 + '%';
+      s.style.top = Math.random() * 100 + '%';
+      s.style.opacity = Math.random();
+      stars.appendChild(s);
+    }
+
+    // Icons
+    const planets = [
+      { name: 'Launch', icon: 'Rocket' },
+      { name: 'Web', icon: 'Globe' },
+      { name: 'Agent', icon: 'Cpu' },
+      { name: 'Data', icon: 'Database' },
+      { name: 'Code', icon: 'Code' },
+      { name: 'AI', icon: 'Brain' }
+    ];
+
+    const container = document.getElementById('planets');
+    planets.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `<div data-lucide="${p.icon}"></div><div>${p.name}</div>`;
+      container.appendChild(card);
+    });
+
+    lucide.createIcons();
+  </script>
+</body>
+</html>
